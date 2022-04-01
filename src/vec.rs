@@ -163,6 +163,7 @@ impl<T, const N: usize> Vec<T, N> {
     }
 
     /// Clears the vector, removing all values.
+    #[inline(always)]
     pub fn clear(&mut self) {
         self.truncate(0);
     }
@@ -225,6 +226,7 @@ impl<T, const N: usize> Vec<T, N> {
     /// Appends an `item` to the back of the collection
     ///
     /// Returns back the `item` if the vector is full
+    #[inline(always)]
     pub fn push(&mut self, item: T) -> Result<(), T> {
         if self.len < self.capacity() {
             unsafe { self.push_unchecked(item) }
